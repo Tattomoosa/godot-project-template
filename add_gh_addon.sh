@@ -14,7 +14,7 @@ PROJECT_DIR="$(pwd)"
 cd submodules
 # echo "${1%%/*}"
 mkdir -p "${1%%/*}"
-git submodule add "git@github.com:$1.git $1"
+git submodule add "git@github.com:$1.git" "$1"
 cd $1/addons
 for f in *; do
   ln -s "$(pwd)/$f" "$PROJECT_DIR/addons/$f"
