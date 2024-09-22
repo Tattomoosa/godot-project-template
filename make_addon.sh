@@ -2,8 +2,8 @@
 
 PROJECT_DIR="$(pwd)"
 
-if [[ $# -ne 2 ]]; then
-  echo 'Usage: make_gd_addon [repo] [addon-root]' >&2
+if [[ $# -ne 1 ]]; then
+  echo 'Usage: make_gd_addon [repo]' >&2
   exit 2
 fi
 
@@ -21,9 +21,9 @@ echo "gdscript/warnings/unsafe_property_access=1" >> "project.godot"
 echo "gdscript/warnings/unsafe_method_access=1" >> "project.godot"
 echo "gdscript/warnings/return_value_discarded=1" >> "project.godot"
 
-mkdir -p "addons/$2"
+mkdir -p "addons/$1"
 
-cd addons/$2
+cd addons/$1
 
 # make some files
 echo "[plugin]" >> "plugin.cfg"
@@ -46,10 +46,17 @@ echo "  pass" >> "plugin.gd"
 mkdir src
 mkdir media
 
-cd ..
+cd ../..
 
-for f in *; do
-  ln -s "$(pwd)/$f" "$PROJECT_DIR/addons/$f"
+for author in *; do
+  mkdir "$PROJECT_DIR/addons/$author"
+  cd "$author"
+  ls
+  for repo in *; do
+    echo ln -s "$(pwd)/$author/$repo" "$PROJECT_DIR/addons/$author/$repo"
+    ln -s "$(pwd)/$repo" "$PROJECT_DIR/addons/$author/$repo"
+  done
+  cd ..
 done
 
 
