@@ -1,0 +1,3 @@
+[submodule ".submodules/tattomoosa/gd-submodules"]
+	path = .submodules/tattomoosa/gd-submodules
+	url = git@github.com:tattomoosa/gd-submodules.git

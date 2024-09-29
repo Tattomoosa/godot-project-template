@@ -19,3 +19,13 @@ gdscript/warnings/untyped_declaration=1
 gdscript/warnings/unsafe_property_access=1
 gdscript/warnings/unsafe_method_access=1
 gdscript/warnings/return_value_discarded=1
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gd-submodules/plugin.cfg")
+
+[gd-submodules]
+
+settings/paths/submodule_folder="res://.submodules"
+settings/paths/submodules_config="res://.submodules/submodules.cfg"
+settings/use_file_dock_plugin=true
